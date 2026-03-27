@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resistance Radio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+```
+body {
+  background: #fff;
+  color: #000;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem;
+  animation: fadeIn 2s ease forwards;
+}
+
+.signal-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, #000, transparent);
+  margin: 0 auto 2.5rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.type {
+  font-size: clamp(0.75rem, 2.5vw, 1rem);
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #000;
+  line-height: 2.4;
+}
+
+.freq {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3px;
+  height: 20px;
+  margin-top: 2.5rem;
+  opacity: 0.3;
+}
+
+.freq-bar { width: 2px; background: #000; animation: bar 1.2s ease-in-out infinite; }
+.freq-bar:nth-child(1)  { animation-delay: 0.0s;  height: 4px; }
+.freq-bar:nth-child(2)  { animation-delay: 0.1s;  height: 8px; }
+.freq-bar:nth-child(3)  { animation-delay: 0.2s;  height: 14px; }
+.freq-bar:nth-child(4)  { animation-delay: 0.3s;  height: 20px; }
+.freq-bar:nth-child(5)  { animation-delay: 0.25s; height: 12px; }
+.freq-bar:nth-child(6)  { animation-delay: 0.15s; height: 18px; }
+.freq-bar:nth-child(7)  { animation-delay: 0.35s; height: 6px; }
+.freq-bar:nth-child(8)  { animation-delay: 0.05s; height: 10px; }
+.freq-bar:nth-child(9)  { animation-delay: 0.4s;  height: 16px; }
+.freq-bar:nth-child(10) { animation-delay: 0.2s;  height: 8px; }
+.freq-bar:nth-child(11) { animation-delay: 0.1s;  height: 4px; }
+
+@keyframes bar {
+  0%, 100% { transform: scaleY(0.3); opacity: 0.3; }
+  50%       { transform: scaleY(1);   opacity: 0.8; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.2; transform: scaleY(0.8); }
+  50%       { opacity: 1;   transform: scaleY(1); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+```
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="signal-line"></div>
+    <div class="type">
+      Welcome to<br>
+      Resistance Radio<br>
+      Broadcasting from your RV
+    </div>
+    <div class="freq">
+      <div class="freq-bar"></div>
+      <div class="freq-bar"></div>
+      <div class="freq-bar"></div>
+      <div class="freq-bar"></div>
+      <div class="freq-bar"></div>
+      <div class="freq-bar"></div>
+      <div class="freq-bar"></div>
+      <div class="freq-bar"></div>
+      <div class="freq-bar"></div>
+      <div class="freq-bar"></div>
+      <div class="freq-bar"></div>
+    </div>
+  </div>
+</body>
+</html>
